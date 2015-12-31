@@ -4,7 +4,6 @@
     <list default="true" id="e6a469e4-3cb1-45c0-8110-e99c035ecc3e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/project/bullet.js" afterPath="$PROJECT_DIR$/js/project/bullet.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/project/index.js" afterPath="$PROJECT_DIR$/js/project/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/project/tank.js" afterPath="$PROJECT_DIR$/js/project/tank.js" />
     </list>
     <ignored path="afrika_tanks_files.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/js/project/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -68,9 +67,13 @@
       <file leaf-file-name="bullet.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/project/bullet.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9657143">
-              <caret line="137" column="38" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
-              <folding />
+            <state vertical-scroll-proportion="0.109714285">
+              <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+              <folding>
+                <element signature="e#402#811#0" expanded="false" />
+                <element signature="e#837#987#0" expanded="false" />
+                <element signature="e#1022#1504#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,8 +86,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/project/index.js" />
         <option value="$PROJECT_DIR$/js/project/tank.js" />
+        <option value="$PROJECT_DIR$/js/project/index.js" />
         <option value="$PROJECT_DIR$/js/project/bullet.js" />
       </list>
     </option>
@@ -343,14 +346,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/project/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/project/tank.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -359,11 +354,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/project/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/project/bullet.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9657143">
-          <caret line="137" column="38" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
-          <folding />
+        <state vertical-scroll-proportion="0.109714285">
+          <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+          <folding>
+            <element signature="e#402#811#0" expanded="false" />
+            <element signature="e#837#987#0" expanded="false" />
+            <element signature="e#1022#1504#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -71,44 +71,43 @@ Bullet.prototype = {
     checkBorderCollision: function() {
         if(this.yCoord <= 0) {
             this.yCoord = 0;
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this.id);
+            this.deleteElement(this);
 
         };
 
         if(this.yCoord >= board.height - Tank.sideSize) {
             this.yCoord = board.height - Tank.sideSize + ((Tank.sideSize - Bullet.sideSize) / 2);
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this.id);
+            this.deleteElement(this);
         };
 
         if(this.xCoord <= 0) {
             this.xCoord = 0;
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this.id);
+            this.deleteElement(this);
         };
 
         if(this.xCoord >= board.width - Tank.sideSize) {
             this.xCoord = board.width - Tank.sideSize + ((Tank.sideSize - Bullet.sideSize) / 2);
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this.id);
+            this.deleteElement(this);
         }; 
     },
 
-    deleteObject: function() {
+    deleteObject: function(bulletObj_id) {
+        console.log( 'do ' + bulletObj_id);
         Bullet.bullets.forEach(function(bullet, i, arr) {
-            if(bullet == this) {
-                delete Bullet.bullets[this.id]
+            if(bullet.id == bulletObj_id) {
+                bulletObserver.unsubscribe(bullets[bulletObj_id]);
+                delete Bullet.bullets[bulletObj_id];
+                Bullet.count -= 1;
             };
         });
-
-        bulletObserver.unsubscribe(this);
-        delete Bullet.bullets[this.id];
-        Bullet.count -= 1;       
     }, 
 
-    deleteElement: function() {
-        $('#bulletId_' + this.id).remove();
+    deleteElement: function(bulletObj) {
+        $('#bulletId_' + bulletObj.id).remove();
     }, 
 
     checkTankCollision: function() {
@@ -124,10 +123,10 @@ Bullet.prototype = {
                 y3 = tank.yCoord,
                 y4 = tank.yCoord + Tank.sideSize;
 
-                console.log('tanks: ' + Tank.tanks);
-                console.log('tank id: ' + tank.id);
-                console.log('b: ' + x1 + '_' + y1 + ':' +  x2 + '_' + y1  + ':' +  x2 + '_' + y2  + ':' + x1 + '_' + y2);
-                console.log('t: ' + x3 + '_' + y3+ ':' +  x4 + '_' + y3  + ':' +  x4 + '_' + y4  + ':' + x3 + '_' + y4);
+                //console.log('tanks: ' + Tank.tanks);
+                //console.log('tank id: ' + tank.id);
+                //console.log('b: ' + x1 + '_' + y1 + ':' +  x2 + '_' + y1  + ':' +  x2 + '_' + y2  + ':' + x1 + '_' + y2);
+                //console.log('t: ' + x3 + '_' + y3+ ':' +  x4 + '_' + y3  + ':' +  x4 + '_' + y4  + ':' + x3 + '_' + y4);
                 //alert('tank id: ' + tank.id);
 
 
@@ -135,11 +134,11 @@ Bullet.prototype = {
                   ((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))) ||
                   ((x2 >= x3 && x2 <= x4) && ((y2 >= y3 && y2 <= y4) || (y1 <= y4 && y1 >= y3))) ||
                   ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
-                    self.deleteObject();
-                    self.deleteElement();
-                    console.log('damage' + tank.id);
+                    self.deleteObject(self.id);
+                    self.deleteElement(self.id);
+                    //console.log('damage' + tank.id);
                     //tank.deleteElement(tank.tankId);
-                    tank.deleteObject(tank);
+                    //tank.deleteObject(tank);
                   };            
         });
     },                    
