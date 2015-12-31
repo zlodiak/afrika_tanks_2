@@ -1,10 +1,10 @@
 $(document).ready(function() {
     var tanksArr = [],
-        tanksCount = 6,   
+        tanksCount = 6,
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
-        bulletsArr = [];   
+        bulletsArr = [];
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
@@ -29,8 +29,12 @@ $(document).ready(function() {
         tanksArr.forEach(function(tank, i, arr) {
             bulletCreateProbably = helper.randomIntFromZero(1000);
 
-            if(bulletCreateProbably >= 690){                
-                bullet = new Bullet(tank.id, bulletsCount, tank.xCoord + 7, tank.yCoord + 7);
+            if(bulletCreateProbably >= 690){
+                bullet = new Bullet(
+                    tank.id, bulletsCount,
+                    tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+                    tank.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2)
+                );
                 bulletsArr.push(bullet);
                 bulletsCount++;
                 bulletObserver.subscribe(bullet);

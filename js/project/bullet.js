@@ -5,7 +5,7 @@ var Bullet = function(ownerId, id, xCoord, yCoord) {
     this.yCoord = yCoord;
     this.id = id; 
     this.ownerId = ownerId; 
-    this.direction; 
+    this.direction = undefined;
 
     this.Create();
 }
@@ -61,8 +61,9 @@ Bullet.prototype = {
         }
     },
 
-    setBulletDirection: function() {       
-        if(this.direction == undefined){
+    setBulletDirection: function() {
+        // console.log('dir: ' + this.direction);
+        if(!this.direction) {
             this.direction = Tank.tanks[this.ownerId].direction;
         };
     },
@@ -111,7 +112,7 @@ Bullet.prototype = {
     }, 
 
     checkTankCollision: function() {
-/*        self = this; 
+        self = this;
 
         Tank.tanks.forEach(function(tank, i, arr) {
             var x1 = self.xCoord,
@@ -119,9 +120,16 @@ Bullet.prototype = {
                 y1 = self.yCoord,
                 y2 = self.yCoord + Bullet.sideSize,
                 x3 = tank.xCoord,
-                x4 = tank.xCoord + Bullet.sideSize,
+                x4 = tank.xCoord + Tank.sideSize,
                 y3 = tank.yCoord,
-                y4 = tank.yCoord + Bullet.sideSize;
+                y4 = tank.yCoord + Tank.sideSize;
+
+                console.log('tanks: ' + Tank.tanks);
+                console.log('tank id: ' + tank.id);
+                console.log('b: ' + x1 + '_' + y1 + ':' +  x2 + '_' + y1  + ':' +  x2 + '_' + y2  + ':' + x1 + '_' + y2);
+                console.log('t: ' + x3 + '_' + y3+ ':' +  x4 + '_' + y3  + ':' +  x4 + '_' + y4  + ':' + x3 + '_' + y4);
+                //alert('tank id: ' + tank.id);
+
 
               if (((y2 >= y3 && y2 <= y4) && ((x2 >= x3 && x2 <= x4) || (x1 <= x4 && x1 >= x3))) || 
                   ((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))) ||
@@ -131,16 +139,16 @@ Bullet.prototype = {
                     self.deleteElement();
                     console.log('damage' + tank.id);
                     //tank.deleteElement(tank.tankId);
-                    //tank.deleteObject(tank);
+                    tank.deleteObject(tank);
                   };            
-        });*/
+        });
     },                    
 
     Move: function() {
       this.setBulletDirection();
       this.offsetCalculate();
       this.checkBorderCollision();
-      // this.checkTankCollision();
+      this.checkTankCollision();
       this.Render();      
     }    
 }

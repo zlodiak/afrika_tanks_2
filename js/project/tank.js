@@ -92,9 +92,9 @@ Tank.prototype = {
 
     checkBorderCollision: function() {
         if(this.yCoord <= 0) { this.yCoord = 0; };
-        if(this.yCoord >= 500 - Tank.sideSize) { this.yCoord = board.height - Tank.sideSize; };
+        if(this.yCoord >= board.height - Tank.sideSize) { this.yCoord = board.height - Tank.sideSize; };
         if(this.xCoord <= 0) { this.xCoord = 0; };
-        if(this.xCoord >= 500 - Tank.sideSize) { this.xCoord = board.width - Tank.sideSize; };                        
+        if(this.xCoord >= board.width - Tank.sideSize) { this.xCoord = board.width - Tank.sideSize; };
     },
 
     deleteObject: function(tankObj) {
