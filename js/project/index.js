@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
-    board = new Board(50, 500, 'orange');
+    board = new Board(500, 500, 'orange');
     helper = new Helper();    
 
     // generate tanks
@@ -29,7 +29,7 @@ $(document).ready(function() {
         tanksArr.forEach(function(tank, i, arr) {
             bulletCreateProbably = helper.randomIntFromZero(1000);
 
-            if(bulletCreateProbably >= 990){
+            if(bulletCreateProbably >= 690){
                 bullet = new Bullet(
                     tank.id, bulletsCount,
                     tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
