@@ -1,12 +1,12 @@
 $(document).ready(function() {
     var tanksArr = [],
-        tanksCount = 1,
+        tanksCount = 2,
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
         bulletsArr = [], 
-        boardWidth = 500,
-        boardHeight = 500,
+        boardWidth = 100,
+        boardHeight = 100,
         borderBackground = 'orange';
 
     tankObserver = new TankObserver();
@@ -29,32 +29,26 @@ $(document).ready(function() {
         tankObserver.action();  
 
         // bullets conditional generate
-        tanksArr.forEach(function(tank, i, arr) {
-            bulletCreateProbably = helper.randomIntFromZero(1000);
+        Tank.tanks.forEach(function(tank, i, arr) {
+            if(jQuery.inArray(tank, Tank.tanks) !== -1){
+                bulletCreateProbably = helper.randomIntFromZero(1000);
 
-            if(bulletCreateProbably >= 690){
-                bullet = new Bullet(
-                    tank.id, 
-                    bulletsCount,
-                    tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
-                    tank.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2)
-                );
-                bulletsArr.push(bullet);
-                bulletsCount++;
-                bulletObserver.subscribe(bullet);
+                if(bulletCreateProbably >= 490){
+                    bullet = new Bullet(
+                        tank.id, 
+                        bulletsCount,
+                        tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+                        tank.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2)
+                    );
+                    bulletsArr.push(bullet);
+                    bulletsCount++;
+                    bulletObserver.subscribe(bullet);
+                };            
             };            
         });  
 
         // bullets moves
         bulletObserver.action();
-
-        // console.log('h: ' + bulletObserver.handlers + 'b: ' + Bullet.bullets);
-/*        console.log(bulletObserver.handlers);
-        console.log(Bullet.bullets);
-        console.log(Bullet.count);
-        console.log('-------------------');    */   
-
-        // console.log(Bullet.length);
     }, 500);    
 
 });

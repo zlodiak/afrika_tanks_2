@@ -99,6 +99,13 @@ Tank.prototype = {
 
     deleteObject: function(tankObj) {
         console.log('del tank' + tankObj.id);
+        Tank.tanks.forEach(function(tank, i, arr) {
+            if(tank == tankObj) {
+                tankObserver.unsubscribe(tankObj);
+                delete Tank.tanks[tankObj.id];
+                Tank.count -= 1;  
+            };
+        });         
     },
 
     deleteElement: function(tankObj) {

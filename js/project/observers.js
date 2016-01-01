@@ -25,7 +25,7 @@ BulletObserver.prototype = {
     }
 }
 
-var TankObserver = function(){
+var TankObserver = function() {
     this.handlers = [];
 }
  
