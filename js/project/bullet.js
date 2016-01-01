@@ -110,7 +110,7 @@ Bullet.prototype = {
     }, 
 
     checkTankCollision: function() {
-/*        self = this;
+        self = this;
 
         Tank.tanks.forEach(function(tank, i, arr) {
             var x1 = self.xCoord,
@@ -122,10 +122,10 @@ Bullet.prototype = {
                 y3 = tank.yCoord,
                 y4 = tank.yCoord + Tank.sideSize;
 
-                console.log('tanks: ' + Tank.tanks);
-                console.log('tank id: ' + tank.id);
-                console.log('b: ' + x1 + '_' + y1 + ':' +  x2 + '_' + y1  + ':' +  x2 + '_' + y2  + ':' + x1 + '_' + y2);
-                console.log('t: ' + x3 + '_' + y3+ ':' +  x4 + '_' + y3  + ':' +  x4 + '_' + y4  + ':' + x3 + '_' + y4);
+                //console.log('tanks: ' + Tank.tanks);
+                //console.log('tank id: ' + tank.id);
+                //console.log('b: ' + x1 + '_' + y1 + ':' +  x2 + '_' + y1  + ':' +  x2 + '_' + y2  + ':' + x1 + '_' + y2);
+                //console.log('t: ' + x3 + '_' + y3+ ':' +  x4 + '_' + y3  + ':' +  x4 + '_' + y4  + ':' + x3 + '_' + y4);
                 //alert('tank id: ' + tank.id);
 
 
@@ -133,13 +133,13 @@ Bullet.prototype = {
                   ((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))) ||
                   ((x2 >= x3 && x2 <= x4) && ((y2 >= y3 && y2 <= y4) || (y1 <= y4 && y1 >= y3))) ||
                   ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
-                    self.deleteObject();
-                    self.deleteElement();
+                    self.deleteObject(self);
+                    self.deleteElement(self);
                     console.log('damage' + tank.id);
                     //tank.deleteElement(tank.tankId);
-                    tank.deleteObject(tank);
+                    //tank.deleteObject(tank);
                   };            
-        });*/
+        });
     },                    
 
     Move: function() {

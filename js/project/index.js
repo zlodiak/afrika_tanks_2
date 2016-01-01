@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var tanksArr = [],
-        tanksCount = 6,
+        tanksCount = 2,
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
-    board = new Board(500, 500, 'orange');
+    board = new Board(500, 200, 'orange');
     helper = new Helper();    
 
     // generate tanks
