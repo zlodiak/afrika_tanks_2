@@ -5,7 +5,7 @@ $(document).ready(function() {
         yCoordTank, 
         bulletsCount = 0, 
         bulletsArr = [], 
-        boardWidth = 100,
+        boardWidth = 60,
         boardHeight = 100,
         borderBackground = 'orange';
 
