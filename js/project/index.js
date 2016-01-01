@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var tanksArr = [],
-        tanksCount = 2,
+        tanksCount = 1,
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
-    board = new Board(500, 200, 'orange');
+    board = new Board(500, 50, 'orange');
     helper = new Helper();    
 
     // generate tanks
@@ -31,7 +31,8 @@ $(document).ready(function() {
 
             if(bulletCreateProbably >= 690){
                 bullet = new Bullet(
-                    tank.id, bulletsCount,
+                    tank.id, 
+                    bulletsCount,
                     tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
                     tank.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2)
                 );

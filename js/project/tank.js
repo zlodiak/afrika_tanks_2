@@ -98,7 +98,7 @@ Tank.prototype = {
     },
 
     deleteObject: function(tankObj) {
-
+        console.log('del tank' + tankObj.id);
     },
 
     deleteElement: function(tankObj) {

@@ -32,6 +32,7 @@ Bullet.prototype = {
 
         Bullet.count++;
         Bullet.bullets.push(this);
+        console.log('bk');
     },
 
     Render: function() {
@@ -129,16 +130,19 @@ Bullet.prototype = {
                 //alert('tank id: ' + tank.id);
 
 
-              if (((y2 >= y3 && y2 <= y4) && ((x2 >= x3 && x2 <= x4) || (x1 <= x4 && x1 >= x3))) || 
+            if(tank.id != self.ownerId){
+                console.log(tank.id + '--' + self.id);                if(((y2 >= y3 && y2 <= y4) && ((x2 >= x3 && x2 <= x4) || (x1 <= x4 && x1 >= x3))) || 
                   ((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))) ||
                   ((x2 >= x3 && x2 <= x4) && ((y2 >= y3 && y2 <= y4) || (y1 <= y4 && y1 >= y3))) ||
                   ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
-                    self.deleteObject(self);
-                    self.deleteElement(self);
-                    console.log('damage' + tank.id);
-                    //tank.deleteElement(tank.tankId);
-                    //tank.deleteObject(tank);
-                  };            
+                        self.deleteObject(self);
+                        self.deleteElement(self);
+                        console.log('damage' + tank.id);
+                        //tank.deleteObject(tank);
+                        //tank.deleteElement(tank.tankId);
+                        
+                };   
+            };         
         });
     },                    
 
