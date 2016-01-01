@@ -71,48 +71,46 @@ Bullet.prototype = {
     checkBorderCollision: function() {
         if(this.yCoord <= 0) {
             this.yCoord = 0;
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this);
+            this.deleteElement(this);
 
         };
 
         if(this.yCoord >= board.height - Tank.sideSize) {
             this.yCoord = board.height - Tank.sideSize + ((Tank.sideSize - Bullet.sideSize) / 2);
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this);
+            this.deleteElement(this);
         };
 
         if(this.xCoord <= 0) {
             this.xCoord = 0;
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this);
+            this.deleteElement(this);
         };
 
         if(this.xCoord >= board.width - Tank.sideSize) {
             this.xCoord = board.width - Tank.sideSize + ((Tank.sideSize - Bullet.sideSize) / 2);
-            this.deleteObject();
-            this.deleteElement();
+            this.deleteObject(this);
+            this.deleteElement(this);
         }; 
     },
 
-    deleteObject: function() {
+    deleteObject: function(bulletObj) {
         Bullet.bullets.forEach(function(bullet, i, arr) {
-            if(bullet == this) {
-                delete Bullet.bullets[this.id]
+            if(bullet == bulletObj) {
+                bulletObserver.unsubscribe(bulletObj);
+                delete Bullet.bullets[bulletObj.id];
+                Bullet.count -= 1;  
             };
-        });
-
-        bulletObserver.unsubscribe(this);
-        delete Bullet.bullets[this.id];
-        Bullet.count -= 1;       
+        });    
     }, 
 
-    deleteElement: function() {
-        $('#bulletId_' + this.id).remove();
+    deleteElement: function(bulletObj) {
+        $('#bulletId_' + bulletObj.id).remove();
     }, 
 
     checkTankCollision: function() {
-        self = this;
+/*        self = this;
 
         Tank.tanks.forEach(function(tank, i, arr) {
             var x1 = self.xCoord,
@@ -141,7 +139,7 @@ Bullet.prototype = {
                     //tank.deleteElement(tank.tankId);
                     tank.deleteObject(tank);
                   };            
-        });
+        });*/
     },                    
 
     Move: function() {
