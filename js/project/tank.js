@@ -102,7 +102,7 @@ Tank.prototype = {
         Tank.tanks.forEach(function(tank, i, arr) {
             if(tank == tankObj) {
                 tankObserver.unsubscribe(tankObj);
-                delete Tank.tanks[tankObj.id];
+                Tank.tanks.splice(i, 1);
                 Tank.count -= 1;  
             };
         });         

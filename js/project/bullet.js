@@ -1,11 +1,11 @@
-var Bullet = function(ownerId, id, xCoord, yCoord) { 
+var Bullet = function(ownerId, id, xCoord, yCoord, direction) { 
     self = this;
 
     this.xCoord = xCoord; 
     this.yCoord = yCoord;
     this.id = id; 
     this.ownerId = ownerId; 
-    this.direction = undefined;
+    this.direction = direction;
 
     this.Create();
 }
@@ -14,7 +14,7 @@ Bullet.bullets = [];
 Bullet.count = 0;
 Bullet.sideSize = 6;
 Bullet.damage = 100;
-Bullet.speed = 20;
+Bullet.speed = 40;
 Bullet.background = 'lime';
 
 Bullet.prototype = {
@@ -61,13 +61,6 @@ Bullet.prototype = {
         }
     },
 
-    setBulletDirection: function() {
-        // console.log('dir: ' + this.direction);
-        if(!this.direction) {
-            this.direction = Tank.tanks[this.ownerId].direction;
-        };
-    },
-
     checkBorderCollision: function() {
         if(this.yCoord <= 0) {
             this.yCoord = 0;
@@ -99,7 +92,8 @@ Bullet.prototype = {
         Bullet.bullets.forEach(function(bullet, i, arr) {
             if(bullet == bulletObj) {
                 bulletObserver.unsubscribe(bulletObj);
-                delete Bullet.bullets[bulletObj.id];
+                // delete Bullet.bullets[bulletObj.id];
+                Bullet.bullets.splice(i, 1);
                 Bullet.count -= 1;  
             };
         });    
@@ -129,7 +123,6 @@ Bullet.prototype = {
                   ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
                         self.deleteObject(self);
                         self.deleteElement(self);
-                        console.log('damage' + tank.id);
                         tank.deleteObject(tank);
                         tank.deleteElement(tank);
                         
@@ -139,7 +132,6 @@ Bullet.prototype = {
     },                    
 
     Move: function() {
-        this.setBulletDirection();
         this.offsetCalculate();
         this.checkBorderCollision();
         this.checkTankCollision();

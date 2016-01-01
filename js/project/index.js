@@ -1,12 +1,12 @@
 $(document).ready(function() {
     var tanksArr = [],
-        tanksCount = 2,
+        tanksCount = 6,
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
         bulletsArr = [], 
-        boardWidth = 60,
-        boardHeight = 100,
+        boardWidth = 500,
+        boardHeight = 500,
         borderBackground = 'orange';
 
     tankObserver = new TankObserver();
@@ -30,21 +30,20 @@ $(document).ready(function() {
 
         // bullets conditional generate
         Tank.tanks.forEach(function(tank, i, arr) {
-            if(jQuery.inArray(tank, Tank.tanks) !== -1){
-                bulletCreateProbably = helper.randomIntFromZero(1000);
+            bulletCreateProbably = helper.randomIntFromZero(1000);
 
-                if(bulletCreateProbably >= 490){
-                    bullet = new Bullet(
-                        tank.id, 
-                        bulletsCount,
-                        tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
-                        tank.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2)
-                    );
-                    bulletsArr.push(bullet);
-                    bulletsCount++;
-                    bulletObserver.subscribe(bullet);
-                };            
-            };            
+            if(bulletCreateProbably >= 490){
+                bullet = new Bullet(
+                    tank.id, 
+                    bulletsCount,
+                    tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+                    tank.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+                    tank.direction
+                );
+                bulletsArr.push(bullet);
+                bulletsCount++;
+                bulletObserver.subscribe(bullet);
+            };                       
         });  
 
         // bullets moves
