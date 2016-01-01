@@ -4,11 +4,14 @@ $(document).ready(function() {
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
-        bulletsArr = [];
+        bulletsArr = [], 
+        boardWidth = 500,
+        boardHeight = 500,
+        borderBackground = 'orange';
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
-    board = new Board(500, 50, 'orange');
+    board = new Board(boardWidth, boardHeight, borderBackground);
     helper = new Helper();    
 
     // generate tanks
