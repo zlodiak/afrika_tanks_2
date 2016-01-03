@@ -79,5 +79,39 @@ $(document).ready(function() {
     }, 500);    
 
 
-
+    // player move
+    $(document).on('keydown', function(e){  
+        if(e.which == 38){  
+            if(tanksArr[0].direction != 'up') {
+                tanksArr[0].direction = 'up'
+            }else{
+                tanksArr[0].yCoord -= Tank.offsetValue;
+                tanksArr[0].Move();
+            };                        
+        }
+        else if(e.which == 40){
+            if(tanksArr[0].direction != 'bottom') {
+                tanksArr[0].direction = 'bottom'
+            }else{
+                tanksArr[0].yCoord += Tank.offsetValue;
+                tanksArr[0].Move();
+            };                       
+        }
+        else if(e.which == 37){
+            if(tanksArr[0].direction != 'left') {
+                tanksArr[0].direction = 'left'
+            }else{
+                tanksArr[0].xCoord -= Tank.offsetValue;
+                tanksArr[0].Move();
+            };        
+        }   
+        else if(e.which == 39){
+            if(tanksArr[0].direction != 'right') {
+                tanksArr[0].direction = 'right'
+            }else{
+                tanksArr[0].xCoord += Tank.offsetValue;
+                tanksArr[0].Move();
+            };        
+        };           
+    });
 });

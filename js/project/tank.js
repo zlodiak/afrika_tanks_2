@@ -113,9 +113,7 @@ Tank.prototype = {
     },
 
     setTankDirection: function(direction) {
-        if(direction){
-
-        }else{
+        if(!direction){
             if(helper.randomIntFromZero(100) > 75) {
                 this.direction = Tank.DIRECTION[helper.randomIntFromZero(4)];
             };
@@ -150,7 +148,7 @@ Tank.prototype = {
     },   
 
     Move: function() {
-        this.setTankDirection();
+        if(this.id != 0) { this.setTankDirection(); };
         this.setArrowDirection(); 
         this.OffsetCalculate();
         this.checkBorderCollision();
