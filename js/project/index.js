@@ -56,22 +56,6 @@ $(document).ready(function() {
         // bullets move
         bulletObserver.action();
 
-        // player move
-        $(document).on('keydown', function(e){  
-            if(e.which == 38){  
-                console.log('up');
-            }
-            else if(e.which == 40){
-                console.log('down');
-            }
-            else if(e.which == 37){
-                console.log('left');
-            }   
-            else if(e.which == 39){
-                console.log('right');
-            };           
-        });
-
         // condition of game over
         if(checkStatePlayer(Tank.tanks, 0)) {
             console.log('game over');
@@ -81,7 +65,20 @@ $(document).ready(function() {
 
     // player move
     $(document).on('keydown', function(e){  
-        if(e.which == 38){  
+        if(e.which == 32){  
+            console.log('fire');   
+            bullet = new Bullet(
+                tanksArr[0].id, 
+                bulletsCount,
+                tanksArr[0].xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+                tanksArr[0].yCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+                tanksArr[0].direction
+            );
+            bulletsArr.push(bullet);
+            bulletsCount++;     
+            bulletObserver.subscribe(bullet);                            
+        }
+        else if(e.which == 38){  
             if(tanksArr[0].direction != 'up') {
                 tanksArr[0].direction = 'up'
             }else{
