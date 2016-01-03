@@ -6,12 +6,13 @@ var Helper = function() {
     this.randomIntFromZero = function(maxExclusive) {
         return Math.floor(Math.random() * (maxExclusive));
     };  
+
+    this.checkStatePlayer = function(array, value) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].id == value) return false;
+        }
+
+        return true;
+    }    
 };
 
-var checkStatePlayer = function(array, value) {
-  for (var i = 0; i < array.length; i++) {
-    if (array[i].id == value) return false;
-  }
-  
-  return true;
-}

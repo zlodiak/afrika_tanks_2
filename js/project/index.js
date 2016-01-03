@@ -57,7 +57,7 @@ $(document).ready(function() {
         bulletObserver.action();
 
         // condition of game over
-        if(checkStatePlayer(Tank.tanks, 0)) {
+        if(helper.checkStatePlayer(Tank.tanks, 0)) {
             console.log('game over');
         };
     }, 500);    
@@ -65,8 +65,7 @@ $(document).ready(function() {
 
     // player move
     $(document).on('keydown', function(e){  
-        if(e.which == 32){  
-            console.log('fire');   
+        if(e.which == 32){    
             bullet = new Bullet(
                 tanksArr[0].id, 
                 bulletsCount,
