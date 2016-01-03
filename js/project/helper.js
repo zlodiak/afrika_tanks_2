@@ -7,7 +7,7 @@ var Helper = function() {
         return Math.floor(Math.random() * (maxExclusive));
     };  
 
-    this.checkStatePlayer = function(tanksArr) {
+    this.checkDeathPlayer = function(tanksArr) {
         for (var i = 0; i < tanksArr.length; i++) {
             if (tanksArr[i].id == 0) return false;
         }
@@ -15,8 +15,12 @@ var Helper = function() {
         return true;
     }    
 
-    this.checkStateEnemies = function(array, value) {
-
+    this.checkDeathEnemies = function(tanksArr) {
+        if((tanksArr.length == 1) && (tanksArr[0]).id == 0) {
+            return true;
+        }else{
+            return false;
+        };
     }     
 };
 

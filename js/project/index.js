@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var tanksArr = [],
-        tanksCount = 6,
+        tanksCount = 3,
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
@@ -60,10 +60,15 @@ $(document).ready(function() {
         // bullets move
         bulletObserver.action();
 
-        // condition of game over
-        if(helper.checkStatePlayer(Tank.tanks)) {
+        // condition of player dead
+        if(helper.checkDeathPlayer(Tank.tanks)) {
             console.log('game over');
         };
+
+        // condition of player win
+        if(helper.checkDeathEnemies(Tank.tanks)) {
+            console.log('player win');
+        };        
     }, 500);    
 
 
