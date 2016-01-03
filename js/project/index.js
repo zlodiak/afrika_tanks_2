@@ -26,6 +26,7 @@ $(document).ready(function() {
         }else{
             // player tank
             tanksArr[i] = new Tank(i, board.width - Tank.sideSize - 200, board.height - Tank.sideSize - 200);
+            tanksArr[i].Move();
         };
     }
 
@@ -72,8 +73,6 @@ $(document).ready(function() {
         });
 
         // condition of game over
-        console.log(Tank.tanks);
-
         if(checkStatePlayer(Tank.tanks, 0)) {
             console.log('game over');
         };
