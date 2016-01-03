@@ -10,7 +10,7 @@ var Tank = function(id, xCoord, yCoord) {
 
 Tank.DIRECTION = ['up', 'right', 'bottom', 'left'];
 Tank.tanks = [];
-Tank.offsetValue = 10;
+Tank.offsetValue = 4;
 Tank.sideSize = 20;
 Tank.tanksCount = 0;
 
@@ -112,10 +112,14 @@ Tank.prototype = {
         $('#tankId_' + tankObj.id).remove();
     },
 
-    setTankDirection: function() {
-        if(helper.randomIntFromZero(100) > 75) {
-            this.direction = Tank.DIRECTION[helper.randomIntFromZero(4)];
-        }
+    setTankDirection: function(direction) {
+        if(direction){
+
+        }else{
+            if(helper.randomIntFromZero(100) > 75) {
+                this.direction = Tank.DIRECTION[helper.randomIntFromZero(4)];
+            };
+        };
     },
 
     OffsetCalculate: function() {

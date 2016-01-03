@@ -14,7 +14,7 @@ Bullet.bullets = [];
 Bullet.count = 0;
 Bullet.sideSize = 6;
 Bullet.damage = 100;
-Bullet.speed = 40;
+Bullet.speed = 20;
 Bullet.background = 'lime';
 
 Bullet.prototype = {

@@ -7,3 +7,11 @@ var Helper = function() {
         return Math.floor(Math.random() * (maxExclusive));
     };  
 };
+
+var checkStatePlayer = function(array, value) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].id == value) return false;
+  }
+  
+  return true;
+}
