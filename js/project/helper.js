@@ -7,12 +7,16 @@ var Helper = function() {
         return Math.floor(Math.random() * (maxExclusive));
     };  
 
-    this.checkStatePlayer = function(array, value) {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i].id == value) return false;
+    this.checkStatePlayer = function(tanksArr) {
+        for (var i = 0; i < tanksArr.length; i++) {
+            if (tanksArr[i].id == 0) return false;
         }
 
         return true;
     }    
+
+    this.checkStateEnemies = function(array, value) {
+
+    }     
 };
 

@@ -7,12 +7,25 @@ $(document).ready(function() {
         bulletsArr = [], 
         boardWidth = 500,
         boardHeight = 300,
-        borderBackground = 'orange';
+        borderBackground = 'orange';        
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
     board = new Board(boardWidth, boardHeight, borderBackground);
     helper = new Helper();    
+
+    function factoryBullet(Obj) {
+        bullet = new Bullet(
+            Obj.id, 
+            bulletsCount,
+            Obj.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+            Obj.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
+            Obj.direction
+        );
+        bulletsArr.push(bullet);
+        bulletsCount++;
+        bulletObserver.subscribe(bullet);  
+    };    
 
     // generate tanks
     for (var i = 0; i < tanksCount; i++) {
@@ -37,16 +50,7 @@ $(document).ready(function() {
             bulletCreateProbably = helper.randomIntFromZero(1000);
 
             if((bulletCreateProbably >= 490) && (tank.id != 0)) { 
-                bullet = new Bullet(
-                    tank.id, 
-                    bulletsCount,
-                    tank.xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
-                    tank.yCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
-                    tank.direction
-                );
-                bulletsArr.push(bullet);
-                bulletsCount++;
-                bulletObserver.subscribe(bullet);
+                factoryBullet(tank);
             };                       
         });  
 
@@ -57,7 +61,7 @@ $(document).ready(function() {
         bulletObserver.action();
 
         // condition of game over
-        if(helper.checkStatePlayer(Tank.tanks, 0)) {
+        if(helper.checkStatePlayer(Tank.tanks)) {
             console.log('game over');
         };
     }, 500);    
@@ -65,17 +69,8 @@ $(document).ready(function() {
 
     // player move
     $(document).on('keydown', function(e){  
-        if(e.which == 32){    
-            bullet = new Bullet(
-                tanksArr[0].id, 
-                bulletsCount,
-                tanksArr[0].xCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
-                tanksArr[0].yCoord + ((Tank.sideSize - Bullet.sideSize) / 2),
-                tanksArr[0].direction
-            );
-            bulletsArr.push(bullet);
-            bulletsCount++;     
-            bulletObserver.subscribe(bullet);                            
+        if(e.which == 32){   
+            factoryBullet(tanksArr[0]);                           
         }
         else if(e.which == 38){  
             if(tanksArr[0].direction != 'up') {
