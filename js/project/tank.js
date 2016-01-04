@@ -55,20 +55,20 @@ Tank.prototype = {
         }
     },
 
-    checkWallCollision: function() {
+    checkObjCollision: function(Obj, objArr) { 
       self = this;
 
-      Wall.walls.forEach(function(wall) {
+      objArr.forEach(function(object) {
         var x1 = self.xCoord,
-            x2 = self.xCoord + Wall.sideSize,
+            x2 = self.xCoord + Obj.sideSize,
             y1 = self.yCoord,
-            y2 = self.yCoord + Wall.sideSize,
-            x3 = wall.xCoord,
-            x4 = wall.xCoord + Wall.sideSize,
-            y3 = wall.yCoord,
-            y4 = wall.yCoord + Wall.sideSize;
+            y2 = self.yCoord + Obj.sideSize,
+            x3 = object.xCoord,
+            x4 = object.xCoord + Obj.sideSize,
+            y3 = object.yCoord,
+            y4 = object.yCoord + Obj.sideSize;
 
-        if(self.id != wall.id){
+        if(self.id != object.id){
           if((y2 >= y3 && y2 <= y4) && ((x2 >= x3 && x2 <= x4) || (x1 <= x4 && x1 >= x3) || (x2 == x4))) {
             self.yCoord -= Tank.offsetValue;
           };
@@ -103,39 +103,6 @@ Tank.prototype = {
         }
       }); 
     },     
-
-    checkTankCollision: function() {
-      self = this;
-
-      Tank.tanks.forEach(function(tank) {
-        var x1 = self.xCoord,
-            x2 = self.xCoord + Tank.sideSize,
-            y1 = self.yCoord,
-            y2 = self.yCoord + Tank.sideSize,
-            x3 = tank.xCoord,
-            x4 = tank.xCoord + Tank.sideSize,
-            y3 = tank.yCoord,
-            y4 = tank.yCoord + Tank.sideSize;
-
-        if(self.id != tank.id){
-          if((y2 >= y3 && y2 <= y4) && ((x2 >= x3 && x2 <= x4) || (x1 <= x4 && x1 >= x3))){
-            self.yCoord -= Tank.offsetValue;
-          };
-
-          if((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))){
-            self.yCoord += Tank.offsetValue;          
-          };
-
-          if((x2 >= x3 && x2 <= x4) && ((y2 >= y3 && y2 <= y4) || (y1 <= y4 && y1 >= y3))){
-            self.xCoord -= Tank.offsetValue;
-          };    
-
-          if((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1))){
-            self.xCoord += Tank.offsetValue;           
-          };    
-        }
-      }); 
-    }, 
 
     checkBorderCollision: function() {
         if(this.yCoord <= 0) { this.yCoord = 0; };
@@ -199,8 +166,8 @@ Tank.prototype = {
         this.setArrowDirection(); 
         this.OffsetCalculate();
         this.checkBorderCollision();
-        this.checkTankCollision(); 
-        this.checkWallCollision(); 
+        this.checkObjCollision(Tank, Tank.tanks); 
+        this.checkObjCollision(Wall, Wall.walls); 
         this.Render();
     }
 }
