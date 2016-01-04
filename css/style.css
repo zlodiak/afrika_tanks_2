@@ -30,7 +30,7 @@ body{
 	position: relative;
 
 	
-	font: normal 12px/16px arial, sans-serif;
+	font: normal 8px arial, sans-serif;
 	color: #000;
 }	
 
@@ -88,6 +88,10 @@ input:-moz-placeholder {
 	position: absolute;
 	background: #f00;
 
+}
+
+#tankId_0{
+	background: cyan;
 }
 
 .bullet{
