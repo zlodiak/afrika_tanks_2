@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var tanksArr = [],
-        tanksCount = 3,
+        tanksCount = 6,
         xCoordTank,
         yCoordTank, 
         bulletsCount = 0, 
