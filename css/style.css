@@ -86,8 +86,6 @@ input:-moz-placeholder {
 
 .tank{
 	position: absolute;
-	width: 20px;
-	height: 20px;
 	background: #f00;
 
 }
@@ -96,4 +94,11 @@ input:-moz-placeholder {
 	position: absolute;
 	border-radius: 6px;
 	display: inline-block;
+}
+
+.wall{
+	position: absolute;
+	background: magenta;
+	background: url('../images/wall.png') left top no-repeat;
+	background-size: contain;
 }

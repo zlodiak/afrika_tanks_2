@@ -19,6 +19,8 @@ Tank.prototype = {
         this.direction = Tank.DIRECTION[helper.randomIntFromZero(4)];
 
         var tank = $('<div class="tank" id="tankId_' + this.id + '"></div>').css({
+            width: Tank.sideSize + 'px',
+            height: Tank.sideSize + 'px',            
             left: this.xCoord + 'px',
             top: this.yCoord + 'px'
         });

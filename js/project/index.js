@@ -1,10 +1,14 @@
 $(document).ready(function() {
-    var tanksArr = [],
-        tanksCount = 6,
+    var tanksArr = [],        
         xCoordTank,
         yCoordTank, 
+        tanksCount = 6,
         bulletsCount = 0, 
+        wallsCount = 10, 
         bulletsArr = [], 
+        wallsArr = [], 
+        xCoordWall,
+        yCoordWall,         
         boardWidth = 500,
         boardHeight = 300,
         borderBackground = 'orange';        
@@ -25,11 +29,19 @@ $(document).ready(function() {
         bulletsArr.push(bullet);
         bulletsCount++;
         bulletObserver.subscribe(bullet);  
-    };    
+    }; 
+
+    // generate walls
+    for (var i = 0; i < wallsCount; i++) {
+        xCoordWall = helper.randomIntFromZero((board.width - Wall.sideSize) / 20);
+        yCoordWall = helper.randomIntFromZero((board.height - Wall.sideSize) / 20);   
+
+        wallsArr[i] = new Wall(i, xCoordWall, yCoordWall);
+    }       
 
     // generate tanks
     for (var i = 0; i < tanksCount; i++) {
-        xCoordTank = helper.randomIntFromZero(board.width - Tank.sideSize),
+        xCoordTank = helper.randomIntFromZero(board.width - Tank.sideSize);
         yCoordTank = helper.randomIntFromZero(board.height - Tank.sideSize);   
         
         if(i != 0){
