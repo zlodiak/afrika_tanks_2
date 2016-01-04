@@ -12,7 +12,7 @@ Wall.sideSize = 20;
 Wall.wallsCount = 0;
 
 Wall.prototype = {
-    Create: function() {    console.log(222);
+    Create: function() {    
         var wall = $('<div class="wall" id="wallId_' + this.id + '"></div>').css({
             width: Wall.sideSize + 'px',
             height: Wall.sideSize + 'px',
@@ -26,12 +26,17 @@ Wall.prototype = {
         Wall.walls.push(this);
     },
 
-    deleteObject: function() {
-        
+    deleteObject: function(wallObj) {
+        Wall.walls.forEach(function(wall, i, arr) {
+            if(wall == wallObj) {
+                Wall.walls.splice(i, 1);
+                Wall.count -= 1;  
+            };
+        });         
     },
 
-    deleteElement: function() {
-
+    deleteElement: function(wallObj) {
+        $('#wallId_' + wallObj.id).remove();
     },  
 
     Render: function() {

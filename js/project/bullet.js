@@ -120,19 +120,47 @@ Bullet.prototype = {
               ((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))) ||
               ((x2 >= x3 && x2 <= x4) && ((y2 >= y3 && y2 <= y4) || (y1 <= y4 && y1 >= y3))) ||
               ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
+                if(tank.id != 0) {
                     self.deleteObject(self);
                     self.deleteElement(self);
                     tank.deleteObject(tank);
                     tank.deleteElement(tank);
+                };                    
+            };            
+        });
+    },  
+
+    checkWallCollision: function() {   
+        self = this;
+
+        Wall.walls.forEach(function(wall, i, arr) {
+            var x1 = self.xCoord,
+                x2 = self.xCoord + Bullet.sideSize,
+                y1 = self.yCoord,
+                y2 = self.yCoord + Bullet.sideSize,
+                x3 = wall.xCoord,
+                x4 = wall.xCoord + Wall.sideSize,
+                y3 = wall.yCoord,
+                y4 = wall.yCoord + Wall.sideSize;
+            
+            if(((y2 >= y3 && y2 <= y4) && ((x2 >= x3 && x2 <= x4) || (x1 <= x4 && x1 >= x3))) || 
+              ((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))) ||
+              ((x2 >= x3 && x2 <= x4) && ((y2 >= y3 && y2 <= y4) || (y1 <= y4 && y1 >= y3))) ||
+              ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
+                    self.deleteObject(self);
+                    self.deleteElement(self);
+                    wall.deleteObject(wall);
+                    wall.deleteElement(wall);
                     
             };            
         });
-    },                    
+    },                       
 
     Move: function() {
         this.offsetCalculate();
         this.checkBorderCollision();
         this.checkTankCollision();
+        this.checkWallCollision();
         this.Render();      
     }    
 }

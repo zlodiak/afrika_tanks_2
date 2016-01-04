@@ -56,12 +56,12 @@ $(document).ready(function() {
     }
 
     // game loop
-    setInterval(function() {
+    setInterval(function() {    
         // bullets conditional generate
         Tank.tanks.forEach(function(tank, i, arr) {
             bulletCreateProbably = helper.randomIntFromZero(1000);
 
-            if((bulletCreateProbably >= 1000) && (tank.id != 0)) { 
+            if((bulletCreateProbably >= 300) && (tank.id != 0)) { 
                 factoryBullet(tank);
             };                       
         });  
