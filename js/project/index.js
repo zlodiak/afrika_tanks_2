@@ -11,14 +11,15 @@ $(document).ready(function() {
         yCoordWall,         
         boardWidth = 500,
         boardHeight = 300,
-        borderBackground = 'orange';        
+        borderBackground = 'orange',
+        probablyShotInPercent = 5;        
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
     board = new Board(boardWidth, boardHeight, borderBackground);
     helper = new Helper();    
 
-    function factoryBullet(Obj) {
+    function factoryBullet(Obj) {   
         bullet = new Bullet(
             Obj.id, 
             bulletsCount,
@@ -59,9 +60,9 @@ $(document).ready(function() {
     setInterval(function() {    
         // bullets conditional generate
         Tank.tanks.forEach(function(tank, i, arr) {
-            bulletCreateProbably = helper.randomIntFromZero(1000);
+            bulletCreateProbably = helper.randomIntFromZero(100);
 
-            if((bulletCreateProbably >= 300) && (tank.id != 0)) { 
+            if((bulletCreateProbably >= (100 - probablyShotInPercent)) && (tank.id != 0)) { 
                 factoryBullet(tank);
             };                       
         });  
