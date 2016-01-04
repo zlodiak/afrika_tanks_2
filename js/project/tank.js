@@ -10,7 +10,7 @@ var Tank = function(id, xCoord, yCoord) {
 
 Tank.DIRECTION = ['up', 'right', 'bottom', 'left'];
 Tank.tanks = [];
-Tank.offsetValue = 4;
+Tank.offsetValue = 1;
 Tank.sideSize = 20;
 Tank.tanksCount = 0;
 
@@ -70,23 +70,23 @@ Tank.prototype = {
 
         if(self.id != tank.id){
           if((y2 >= y3 && y2 <= y4) && ((x2 >= x3 && x2 <= x4) || (x1 <= x4 && x1 >= x3))){
-            self.yCoord -= Tank.sideSize / 2;
-            tank.xCoord += Tank.sideSize / 2;
+            self.yCoord -= Tank.offsetValue;
+            //tank.xCoord += 1;
           };
 
           if((y4 >= y1 && y4 <= y2) && ((x4 >= x1 && x4 <= x2) || (x3 <= x2 && x3 >= x1))){
-            tank.xCoord -= Tank.sideSize / 2;
-            self.yCoord += Tank.sideSize / 2;
+            self.yCoord += Tank.offsetValue;
+            //tank.xCoord -= 1;            
           };
 
           if((x2 >= x3 && x2 <= x4) && ((y2 >= y3 && y2 <= y4) || (y1 <= y4 && y1 >= y3))){
-            self.xCoord -= Tank.sideSize / 2;
-            tank.xCoord += Tank.sideSize / 2;
+            self.xCoord -= Tank.offsetValue;
+            //tank.xCoord += 1;
           };    
 
           if((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1))){
-            tank.xCoord -= Tank.sideSize / 2;
-            self.xCoord += Tank.sideSize / 2;
+            self.xCoord += Tank.offsetValue;
+            //tank.xCoord -= 1;            
           };    
         }
       }); 

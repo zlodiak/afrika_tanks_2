@@ -2,7 +2,7 @@ $(document).ready(function() {
     var tanksArr = [],        
         xCoordTank,
         yCoordTank, 
-        tanksCount = 6,
+        tanksCount = 12,
         bulletsCount = 0, 
         wallsCount = 10, 
         bulletsArr = [], 
@@ -61,7 +61,7 @@ $(document).ready(function() {
         Tank.tanks.forEach(function(tank, i, arr) {
             bulletCreateProbably = helper.randomIntFromZero(1000);
 
-            if((bulletCreateProbably >= 490) && (tank.id != 0)) { 
+            if((bulletCreateProbably >= 1000) && (tank.id != 0)) { 
                 factoryBullet(tank);
             };                       
         });  

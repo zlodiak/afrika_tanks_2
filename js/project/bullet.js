@@ -14,7 +14,7 @@ Bullet.bullets = [];
 Bullet.count = 0;
 Bullet.sideSize = 6;
 Bullet.damage = 100;
-Bullet.speed = 20;
+Bullet.offsetValue = 20;
 Bullet.background = 'lime';
 
 Bullet.prototype = {
@@ -44,16 +44,16 @@ Bullet.prototype = {
     offsetCalculate: function() {
         switch (this.direction){
         case 'up':
-            this.yCoord -= Bullet.speed;
+            this.yCoord -= Bullet.offsetValue;
             break;
         case 'right':
-            this.xCoord += Bullet.speed;
+            this.xCoord += Bullet.offsetValue;
             break;
         case 'bottom':
-            this.yCoord += Bullet.speed;
+            this.yCoord += Bullet.offsetValue;
             break;
         case 'left':
-            this.xCoord -= Bullet.speed;
+            this.xCoord -= Bullet.offsetValue;
             break;         
         default:
             console.log('error bullrt direction definition');
