@@ -2,7 +2,7 @@ $(document).ready(function() {
     var tanksArr = [],        
         xCoordTank,
         yCoordTank, 
-        tanksCount = 2,
+        tanksCount = 11,
         bulletsCount = 0, 
         wallsCount = 200, 
         bulletsArr = [], 
