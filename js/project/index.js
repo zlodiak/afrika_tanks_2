@@ -10,7 +10,7 @@ $(document).ready(function() {
         xCoordWall,
         yCoordWall,         
         boardWidth = 500,
-        boardHeight = 300,
+        boardHeight = 500,
         borderBackground = 'orange',
         probablyShotInPercent = 15;        
 
@@ -34,8 +34,8 @@ $(document).ready(function() {
 
     // generate walls
     for (var i = 0; i < wallsCount; i++) {
-        xCoordWall = helper.randomIntFromZero((board.width - Wall.sideSize) / 20);
-        yCoordWall = helper.randomIntFromZero((board.height - Wall.sideSize) / 20);   
+        xCoordWall = helper.randomIntFromZero((board.width) / 20);
+        yCoordWall = helper.randomIntFromZero((board.height) / 20);   
 
         wallsArr[i] = new Wall(i, xCoordWall, yCoordWall);
     }       

@@ -148,8 +148,7 @@ Bullet.prototype = {
               ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
                     self.deleteObject(self);
                     self.deleteElement(self);
-                    wall.stamina -= 25;                    
-                    wall.Render();                    
+                    wall.stamina -= 25;                                      
             };            
         });
     },  
