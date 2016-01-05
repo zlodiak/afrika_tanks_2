@@ -1,8 +1,7 @@
 var Wall = function(id, xCoord, yCoord) { 
     this.xCoord = xCoord * Wall.sideSize;
     this.yCoord = yCoord * Wall.sideSize;
-    this.id = id; 
-    this.damage = 5; 
+    this.id = id;  
 
     this.Create();
 }
@@ -10,6 +9,7 @@ var Wall = function(id, xCoord, yCoord) {
 Wall.walls = [];
 Wall.sideSize = 20;
 Wall.wallsCount = 0;
+Wall.stamina = 100;
 
 Wall.prototype = {
     Create: function() {    

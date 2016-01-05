@@ -13,7 +13,7 @@ var Bullet = function(ownerId, id, xCoord, yCoord, direction) {
 Bullet.bullets = [];
 Bullet.count = 0;
 Bullet.sideSize = 6;
-Bullet.damage = 100;
+Bullet.damage = 25;
 Bullet.offsetValue = 20;
 Bullet.background = 'lime';
 
@@ -92,7 +92,6 @@ Bullet.prototype = {
         Bullet.bullets.forEach(function(bullet, i, arr) {
             if(bullet == bulletObj) {
                 bulletObserver.unsubscribe(bulletObj);
-                // delete Bullet.bullets[bulletObj.id];
                 Bullet.bullets.splice(i, 1);
                 Bullet.count -= 1;  
             };
