@@ -2,9 +2,9 @@ $(document).ready(function() {
     var tanksArr = [],        
         xCoordTank,
         yCoordTank, 
-        tanksCount = 12,
+        tanksCount = 1,
         bulletsCount = 0, 
-        wallsCount = 10, 
+        wallsCount = 100, 
         bulletsArr = [], 
         wallsArr = [], 
         xCoordWall,
@@ -12,7 +12,7 @@ $(document).ready(function() {
         boardWidth = 500,
         boardHeight = 300,
         borderBackground = 'orange',
-        probablyShotInPercent = 5;        
+        probablyShotInPercent = 15;        
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
@@ -82,7 +82,7 @@ $(document).ready(function() {
         if(helper.checkDeathEnemies(Tank.tanks)) {
             console.log('player win');
         };        
-    }, 500);    
+    }, 250);    
 
 
     // player move

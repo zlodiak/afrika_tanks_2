@@ -148,18 +148,29 @@ Bullet.prototype = {
               ((x4 >= x1 && x4 <= x2) && ((y4 >= y1 && y4 <= y2) || (y3 <= y2 && y3 >= y1)))) {
                     self.deleteObject(self);
                     self.deleteElement(self);
-                    wall.deleteObject(wall);
-                    wall.deleteElement(wall);
-                    
+                    wall.stamina -= 25;                    
+                    wall.Render();                    
             };            
         });
-    },                       
+    },  
+
+    checkWallStamina: function() {   
+        self = this;
+
+        Wall.walls.forEach(function(wall, i, arr) {
+            if(wall.stamina <= 0) {
+                wall.deleteObject(wall);
+                wall.deleteElement(wall);
+            };
+        });
+    },                          
 
     Move: function() {
         this.offsetCalculate();
         this.checkBorderCollision();
         this.checkTankCollision();
         this.checkWallCollision();
+        this.checkWallStamina();
         this.Render();      
     }    
 }
