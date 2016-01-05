@@ -30,7 +30,7 @@ body{
 	position: relative;
 
 	
-	font: normal 8px arial, sans-serif;
+	font: normal 10px arial, sans-serif;
 	color: #000;
 }	
 
@@ -82,6 +82,7 @@ input:-moz-placeholder {
 	display: inline-block;
 	position: relative;
 	overflow: hidden;
+	background: url('../images/sand.jpg') left top repeat;
 }
 
 .tank{

@@ -21,6 +21,14 @@ var Helper = function() {
         }else{
             return false;
         };
-    }     
+    } 
+
+    this.finalMessage = function(message) {
+        $('#board').css({
+            'font-size': '40px'
+        }).html(message);
+
+        setTimeout(function() { location.reload(); }, 3000);
+    }          
 };
 

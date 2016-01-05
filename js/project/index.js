@@ -2,21 +2,20 @@ $(document).ready(function() {
     var tanksArr = [],        
         xCoordTank,
         yCoordTank, 
-        tanksCount = 1,
+        tanksCount = 2,
         bulletsCount = 0, 
-        wallsCount = 100, 
+        wallsCount = 200, 
         bulletsArr = [], 
         wallsArr = [], 
         xCoordWall,
         yCoordWall,         
         boardWidth = 500,
         boardHeight = 500,
-        borderBackground = 'orange',
         probablyShotInPercent = 15;        
 
     tankObserver = new TankObserver();
     bulletObserver = new BulletObserver();
-    board = new Board(boardWidth, boardHeight, borderBackground);
+    board = new Board(boardWidth, boardHeight);
     helper = new Helper();    
 
     function factoryBullet(Obj) {   
@@ -75,12 +74,13 @@ $(document).ready(function() {
 
         // condition of player dead
         if(helper.checkDeathPlayer(Tank.tanks)) {
-            console.log('game over');
+            helper.finalMessage('player dead. game over');
         };
 
         // condition of player win
         if(helper.checkDeathEnemies(Tank.tanks)) {
-            console.log('player win');
+            helper.finalMessage('player win!!!');
+
         };        
     }, 250);    
 
